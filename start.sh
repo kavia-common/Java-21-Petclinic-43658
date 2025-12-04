@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # PUBLIC_INTERFACE
 # start.sh - Entry script to start the Spring Boot application from the repository root.
-# This script prefers the Maven Wrapper (./mvnw) if present; otherwise falls back to system mvn.
+# This script uses the Maven Wrapper (./mvnw) and never relies on a system 'mvn'.
 # It also sets standard environment variables for the preview system.
 #
 # Behavior:
@@ -29,20 +29,20 @@ SPRING_PROPS=(
   "-Dserver.address=${SERVER_ADDRESS}"
 )
 
-# Prefer Maven Wrapper if present
-MVN_CMD=""
-if [ -x "./mvnw" ]; then
-  MVN_CMD="./mvnw"
-elif [ -x "mvnw" ]; then
-  MVN_CMD="mvnw"
-else
-  MVN_CMD="mvn"
+# Ensure Maven Wrapper exists and is executable
+if [ ! -f "./mvnw" ]; then
+  echo "ERROR: ./mvnw not found at repository root. Please add Maven Wrapper (mvn -N io.takari:maven:wrapper or mvn -N -q -Ddistrib ..) and commit .mvn and mvnw."
+  echo "The preview system is configured to use ./mvnw only."
+  exit 1
 fi
 
-# Echo for diagnostics
-echo "Using Maven command: ${MVN_CMD}"
+# Fix permissions if needed
+if [ ! -x "./mvnw" ]; then
+  chmod +x ./mvnw || true
+fi
+
+echo "Using Maven Wrapper: ./mvnw"
 echo "Starting Spring Boot with: ${SPRING_PROPS[*]}"
 
-# Run the Spring Boot application. 
-# -DskipTests=true speeds up startup in preview environments; adjust if needed.
-exec ${MVN_CMD} -DskipTests=true ${SPRING_PROPS[@]} spring-boot:run
+# Run the Spring Boot application quietly, skipping tests to speed up preview boot.
+exec ./mvnw -q -DskipTests=true "${SPRING_PROPS[@]}" spring-boot:run
