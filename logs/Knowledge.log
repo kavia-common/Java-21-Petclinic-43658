@@ -98,3 +98,36 @@
 2025-12-04 15:04:23,223 - Knowledge - INFO - [WEBSOCKET] Sent: Type=progress_update, Size: 240, Duration: 0ms
 2025-12-04 15:04:23,426 - Knowledge - INFO - Saving knowledge to Redis...
 2025-12-04 15:04:23,595 - Knowledge - INFO - Knowledge saved to Redis successfully
+2025-12-16 04:42:38,453 - Knowledge - INFO - Created shared MongoDB connection pool
+2025-12-16 04:42:38,811 - Knowledge - INFO - Starting Knowledge Graph processing with 20 threads
+2025-12-16 04:42:38,979 - Knowledge - INFO - Initial configuration: chunk_size=65536, max_cache_size=500
+2025-12-16 04:42:39,136 - Knowledge - INFO - Knowledge Graph concurrency configuration: workers=20, max_batch_size=25, max_concurrent_llm_calls=50
+2025-12-16 04:42:40,050 - Knowledge - INFO - 🔍 _load_persisted_knowledge called - checking for Redis optimization
+2025-12-16 04:42:40,310 - Knowledge - WARNING - ❌ load_from_redis method not found - Redis support not attached
+2025-12-16 04:42:40,471 - Knowledge - INFO - load persisted knowledge: begin
+2025-12-16 04:42:40,692 - Knowledge - INFO - Persisted knowledge files in /app/data/kaviademo4200/43658/b41642f/Java-21-Petclinic-43658/.knowledge have been renamed to use .json
+2025-12-16 04:42:40,903 - Knowledge - INFO - Found code-base-name: https://github.com/kavia-common/Java-21-Petclinic-43658.git:kavia-main
+2025-12-16 04:42:41,122 - Knowledge - INFO - Found code_base: <app.utils.kg_build.knowledge.KnowledgeCodeBase object at 0x7f1cf7680fd0>
+2025-12-16 04:42:42,475 - Knowledge - INFO - Found code-base-name: https://github.com/kavia-common/Java-21-Petclinic-43658.git:kavia-main
+2025-12-16 04:42:42,638 - Knowledge - INFO - Found code_base: <app.utils.kg_build.knowledge.KnowledgeCodeBase object at 0x7f1cf7680fd0>
+2025-12-16 04:42:42,801 - Knowledge - INFO - persist ingested knowledge for /app/data/kaviademo4200/43658/b41642f/Java-21-Petclinic-43658/README.md
+2025-12-16 04:42:43,067 - Knowledge - INFO - [MONGODB_OP] Completed: persist, Collection: file_info, Duration: 88ms
+2025-12-16 04:42:43,862 - Knowledge - INFO - [REDIS_OP] Completed: store_embedding, Key: README.md, Duration: 630ms
+2025-12-16 04:42:44,037 - Knowledge - INFO - persist search terms embedding for README.md
+2025-12-16 04:42:44,228 - Knowledge - INFO - process ingested knowledge for /app/data/kaviademo4200/43658/b41642f/Java-21-Petclinic-43658/README.md
+2025-12-16 04:42:44,433 - Knowledge - INFO - Loaded 1 files from persisted knowledge
+2025-12-16 04:42:44,622 - Knowledge - INFO - load persisted knowledge: end
+2025-12-16 04:42:44,848 - Knowledge - INFO - Redis support added with prefix knowledge:b41642f:
+2025-12-16 04:42:45,046 - Knowledge - INFO - Starting knowledge initialization for ID: 7SrGzi-b41642f
+2025-12-16 04:42:45,255 - Knowledge - INFO - 🔍 Checking Redis for build_id: b41642f
+2025-12-16 04:42:45,426 - Knowledge - INFO - 🔍 Full session ID: 7SrGzi-b41642f
+2025-12-16 04:42:45,598 - Knowledge - INFO - 🔍 Redis prefix will be: knowledge:b41642f:
+2025-12-16 04:42:45,781 - Knowledge - INFO - 🔍 Using attached load_from_redis() method
+2025-12-16 04:42:46,034 - Knowledge - INFO - 🔍 Attempting to load knowledge from Redis...
+2025-12-16 04:42:46,249 - Knowledge - INFO - 🔍 Using derived instance_id for Redis lookup: b41642f
+2025-12-16 04:42:46,428 - Knowledge - INFO - ✅ Redis cache found! Loading knowledge...
+2025-12-16 04:42:46,599 - Knowledge - INFO - ✅ Successfully loaded from Redis: 1 files
+2025-12-16 04:42:46,802 - Knowledge - INFO - ✅ Redis load complete: 1 files in 1.02s
+2025-12-16 04:42:46,967 - Knowledge - INFO - ⚡ Total Redis path: 1.02s (vs ~300s from disk)
+2025-12-16 04:42:47,173 - Knowledge - INFO - Saving knowledge to Redis...
+2025-12-16 04:42:47,381 - Knowledge - INFO - Knowledge saved to Redis successfully
